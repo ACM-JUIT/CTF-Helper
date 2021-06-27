@@ -24,7 +24,7 @@ list (){
         2) ETC=`cat ./toolList/Crypto.txt`;;
         3) ETC=`cat ./toolList/Fuzzers.txt`;;
         4) ETC=`cat ./toolList/Stego.txt`;;
-        *) echo "GUSS HAS HAD A STONK";;
+        *) echo "Helper is tired now look yourself";;
     esac
     echo $ETC
     echo "Press Any Key To Return"

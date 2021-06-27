@@ -1,0 +1,3 @@
+#!/bin/bash
+java -jar $CTF_ROOT/bin/stegsolve.jar
+

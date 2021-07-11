@@ -25,6 +25,10 @@ def install():
     else:
         execfile(TI+'.py')
 
+# Fix Function (Md5)
+# def fix():
+#     import checksumdir
+#     hash = checksumdir.dirhash("c:\\temp")
 
 def list1():
     while True:

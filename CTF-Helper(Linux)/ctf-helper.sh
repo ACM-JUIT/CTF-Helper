@@ -141,7 +141,7 @@ case $CHC in
     -i)      install;;                      
     list)    list;;                               #calls list function  
     -l)      list;;                                 
-    help)    echo "abhi fuction code nahi kara";; #calls help funtion(not coded)    
+    help)    echo "got bored so fuck it im gonna leave it here ";; #calls help funtion(not coded)    
     -h)      echo "abhi fuction code nahi kara";; 
     fix)     check;;                              #calls fix function  
     -f)      echo "abhi fuction code nahi kara";;

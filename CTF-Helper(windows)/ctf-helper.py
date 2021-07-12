@@ -11,7 +11,7 @@ def checkinstall(TI):
         return YO
     else:
         print(TI + 'missing in path!')
-        return 'no'
+        return 'yes'
 
 
 def install():
@@ -23,12 +23,13 @@ def install():
     if CH == "no":
         print("we are running the tool for you\n")
     else:
-        execfile(TI+'.py')
+        exec(open("./" + CT + "/"+TI+".py").read())
 
 # Fix Function (Md5)
 # def fix():
 #     import checksumdir
 #     hash = checksumdir.dirhash("c:\\temp")
+
 
 def list1():
     while True:

@@ -25,7 +25,7 @@ install (){
     if [ "$YE" = "no" ]; then
     $IN                          #calls the tool file  
     else                            
-    ./$CT/$IN/install-ctf.sh      #
+    ./$CT/$IN/install-ctf.sh >/dev/null      #installing the tool
     fi
 }
 

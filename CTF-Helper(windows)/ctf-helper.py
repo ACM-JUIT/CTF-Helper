@@ -10,20 +10,47 @@ def checkinstall(TI):
         YO = input()
         return YO
     else:
-        print(TI + 'missing in path!')
+        print(TI + ' missing in path!')
         return 'yes'
 
 
 def install():
     print("select category")
-    CT = input()
+    while True:
+        f = open("./toolList/index.txt", "r")
+        print(f.read())
+        choice = input()
+        if choice == "exit":
+            exit()
+        elif choice == "binary":
+            f = open("./toolList/Binary.txt", "r")
+            print(f.read())
+            break
+        elif choice == "crypto":
+            f = open("./toolList/Crypto.txt", "r")
+            print(f.read())
+            break
+        elif choice == "stego":
+            f = open("./toolList/Stego.txt", "r")
+            print(f.read())
+            break
+        elif choice == "fuzzers":
+            f = open("./toolList/Fuzzers.txt", "r")
+            print(f.read())
+            break
+        elif choice == "web":
+            f = open("./toolList/web.txt", "r")
+            print(f.read())
+            break
+        else:
+            print("Invalid choice, please choose again\n")
     print("select tool")
     TI = input()
     CH = checkinstall(TI)
     if CH == "no":
         print("we are running the tool for you\n")
     else:
-        exec(open("./" + CT + "/"+TI+".py").read())
+        exec(open("./" + choice + "/"+TI+".py").read())
 
 # Fix Function (Md5)
 # def fix():
@@ -31,75 +58,56 @@ def install():
 #     hash = checksumdir.dirhash("c:\\temp")
 
 
-def list1():
-    while True:
-        f = open("./toolList/index.txt", "r")
-        print(f.read())
-        choice = input()
-        if choice == "exit":
-            break
-        elif choice == "binary":
-            f = open("./toolList/Binary.txt", "r")
-            print(f.read())
-        elif choice == "crypto":
-            f = open("./toolList/Crypto.txt", "r")
-            print(f.read())
-        elif choice == "stego":
-            f = open("./toolList/Fuzzers.txt", "r")
-            print(f.read())
-        elif choice == "fuzzers":
-            f = open("./toolList/Stego.txt", "r")
-            print(f.read())
-        else:
-            print("Invalid choice, please choose again\n")
-
-
 def ascii1():
     RA = random.randint(0, 4)
     f = open("./ascii_art/"+str(RA)+".txt", "r")
     print(f.read())
 
+ascii1()
+print("")
+print("")
+print("░█████╗░████████╗███████╗  ██╗░░██╗███████╗██╗░░░░░██████╗░███████╗██████╗░")
+print("██╔══██╗╚══██╔══╝██╔════╝  ██║░░██║██╔════╝██║░░░░░██╔══██╗██╔════╝██╔══██╗")
+print("██║░░╚═╝░░░██║░░░█████╗░░  ███████║█████╗░░██║░░░░░██████╔╝█████╗░░██████╔╝")
+print("██║░░██╗░░░██║░░░██╔══╝░░  ██╔══██║██╔══╝░░██║░░░░░██╔═══╝░██╔══╝░░██╔══██╗")
+print("╚█████╔╝░░░██║░░░██║░░░░░  ██║░░██║███████╗███████╗██║░░░░░███████╗██║░░██║")
+print("░╚════╝░░░░╚═╝░░░╚═╝░░░░░  ╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░░░░╚══════╝╚═╝░░╚═╝")
+
+print("")
+print("")
+print("")
+print("           =[ CTF-Helper version 1.1 ")
+print("+ -- -- -- =[ CTF tools at your fingertips ")
+print("+ -- -- -- =[ Star us on github, if you are loving it ")
+print("")
+print("Note: we would love if you could contribute to our project")
+print("")
+print("")
 
 while True:
-    ascii1()
-    print("")
-    print("")
-    print("░█████╗░████████╗███████╗  ██╗░░██╗███████╗██╗░░░░░██████╗░███████╗██████╗░")
-    print("██╔══██╗╚══██╔══╝██╔════╝  ██║░░██║██╔════╝██║░░░░░██╔══██╗██╔════╝██╔══██╗")
-    print("██║░░╚═╝░░░██║░░░█████╗░░  ███████║█████╗░░██║░░░░░██████╔╝█████╗░░██████╔╝")
-    print("██║░░██╗░░░██║░░░██╔══╝░░  ██╔══██║██╔══╝░░██║░░░░░██╔═══╝░██╔══╝░░██╔══██╗")
-    print("╚█████╔╝░░░██║░░░██║░░░░░  ██║░░██║███████╗███████╗██║░░░░░███████╗██║░░██║")
-    print("░╚════╝░░░░╚═╝░░░╚═╝░░░░░  ╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░░░░╚══════╝╚═╝░░╚═╝")
-
-    print("")
-    print("")
-    print("")
-    print("           =[ CTF-Helper version 1.1 ")
-    print("+ -- -- -- =[ CTF tools at your fingertips ")
-    print("+ -- -- -- =[ Star us on github, if you are loving it ")
-    print("")
-    print("Note: we would love if you could contribute to our project")
-    print("")
-    print("")
 
     print("What you wanna do today 0_0:")
     print("")
-    print("(-i) install            (-l) list")
-    print("(-f) fix                (-h) help")
+    print("install                 help")
+    print("fix                     exit")
     print("")
     choice = input()
     if choice == "exit":
         break
     elif choice == "install":
         install()
-    elif choice == "list":
-        list1()
     elif choice == "fix":
         print('I got bored so I am leaving it here')
     elif choice == "help":
-        print('I got bored so I am leaving it here')
+        print('For installing a tool:')
+        print('1.Type install and press enter')
+        print('2.)You will now see a list of categories of tools')
+        print('3.)Type the name of the category you want.For example:Binary')
+        print('4.)List of tools will appear.Type the name of the tool you want to unstall and press enter.For example: dex2ja')
+        print('5.)Selected tool will soon be downloaded.Happy Hacking! :)')
+        print('For exiting type exit and hit enter')
     else:
-        print("Invalid choice, please choose again\n")
+        print("Invalid choice, please choose again")
 
 print("Thank you for using ctf-helper")
-print(".")
+print("Happy Hacking!:)")

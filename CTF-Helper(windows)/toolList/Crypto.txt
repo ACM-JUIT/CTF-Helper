@@ -1,0 +1,12 @@
+Crypto-  aeskeyfind(Windows and Linux)- aeskeyfind is a tool that illustrates automatic techniques for locating 128-bit and 256-bit AES keys in a captured memory image.
+         cribdrag(Windows)- cribdrag is a script for performing crib dragging attacks against ciphertext encrypted using an XOR operation with a predictable key.
+         evilize(Linux)- It is a tool to create MD5 colliding binaries.
+         foresight(Windows and Linux)- A tool for predicting the output of random number generators. to run, launch "foresee".
+         hashid(Windows and Linux)- hashID is a tool to help you identify different types of hashes used to encrypt data, especially passwords.
+         msieve(Windows and Linux)- Msieve is a C library implementing a suite of algorithms to factor large integers. 
+         padbuster(Windows and Linux)- PadBuster is a Perl script for automating Padding Oracle Attacks.
+         pkcrack(Windows and Linux)- PkZip encryption cracker.
+         python-paddingoracle(Linux)- python-paddingoracle is an API that provides pentesters a customizable alternative to PadBuster and other padding oracle exploit tools that can't easily be used in unique, per-app scenarios.
+         ssh_decoder(Windows and Linux)- ssh_decoder is a tool to decipher a ssh session from a pcap file. 
+         xortool(Windows and Linux)- xortool.py is a tool to do some xor analysis.  
+         yafu(Windows and Linux)- YAFU is primarily a command-line driven tool.

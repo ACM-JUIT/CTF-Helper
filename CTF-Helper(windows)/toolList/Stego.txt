@@ -1,7 +1,20 @@
-stego-   ElectronicColoringBook(Windows and Linux)- It is a colorize data file according to repetitive chunks.
-         exiftool(Windows and Linux)- ExifTool is a free and open-source software program for reading, writing, and manipulating image, audio, video, and PDF metadata.
-         lsbsteg(Linux)- lsbsteg is a small Python 3 application which embeds text messages into images using the Least Significant Bit steganographic algorithm.
-         poppler(Windows and Linux)- Poppler is a free software utility library for rendering Portable Document Format (PDF) documents.
-         steganabara(Windows and Linux)- Steganabara is a tool for stegano analysis.
-         stegdetect(Windows and Linux)- The stegdetect utility analyses image files for steganographic content.
-         stegsolve(Windows and Linux)- Stegsolve is an image channel viewer written in Java. It used for anti-stealth and hidden information detection.
+stego-   1.)ElectronicColoringBook(Windows and Linux)
+         It is a colorize data file according to repetitive chunks.
+
+         2.)exiftool(Windows and Linux)
+         ExifTool is a free and open-source software program for reading, writing, and manipulating image, audio, video, and PDF metadata.
+
+         3.)lsbsteg(Linux)
+         lsbsteg is a small Python 3 application which embeds text messages into images using the Least Significant Bit steganographic algorithm.
+
+         4.)poppler(Windows and Linux)
+         Poppler is a free software utility library for rendering Portable Document Format (PDF) documents.
+
+         5.)steganabara(Windows and Linux)
+         Steganabara is a tool for stegano analysis.
+
+         6.)stegdetect(Windows and Linux)
+         The stegdetect utility analyses image files for steganographic content.
+
+         7.)stegsolve(Windows and Linux)
+         Stegsolve is an image channel viewer written in Java. It used for anti-stealth and hidden information detection.

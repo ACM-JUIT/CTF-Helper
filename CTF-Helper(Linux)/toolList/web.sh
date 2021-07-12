@@ -1,0 +1,7 @@
+echo "web-      burpsuite(Windows and Linux)- Burp Suite Professional is one of the most popular penetration testing and vulnerability finder tools, and is often used for checking web application security. 
+                dirsearch(Windows and Linux)- Dirsearch is a tool written in Python used to brute-force hidden web directories and files.
+                hashpump(Linux)- Hashpump is a tool that implements attacks against multiple hashing functions with OpenSSL, and supports extended attacks on lengths such as MD5, etc.
+                mitmproxy(Windows and Linux)- Mitmproxy is an open source proxy application that allows intercepting HTTP and HTTPS connections between any HTTP(S) client.
+                net-creds(Windows and Linux)- Net Creds is a free tool that sniffs passwords and hashes from a network interface.
+                sqlmap(Windows and Linux)- SQL Injection is a code injection technique where an attacker executes malicious SQL queries that control a web application's database."
+                

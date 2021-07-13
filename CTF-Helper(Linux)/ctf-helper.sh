@@ -20,7 +20,8 @@ install (){
     echo ""
     cat ./toolList/index.txt
     echo ""
-    read CT                       #stores the category in CT
+    read CT                         #stores the category in CT
+    echo ""
     case $CT in                     #switch case for the various categories, it displays the tool of the category chosen
         binary) ./toolList/Binary.sh;;
         crypto) ./toolList/Crypto.sh;;
@@ -32,7 +33,9 @@ install (){
     esac
     
     echo ""
+    echo "Select your tool"
     read IN                       #stores the tool in IN 
+    echo ""
     checkinstall
     if [ "$YE" = "no" ]; then
         while true;do
@@ -99,6 +102,15 @@ ascii (){
     ./Ascii_art/$AF.sh
 }
 
+help (){
+        echo 'For installing a tool:'
+        echo '1.Type install and press enter'
+        echo '2.)You will now see a list of categories of tools'
+        echo '3.)Type the name of the category you want.For example:Binary'
+        echo '4.)List of tools will appear.Type the name of the tool you want to unstall and press enter.For example: dex2ja'
+        echo '5.)Selected tool will soon be downloaded.Happy Hacking! :)'
+        echo 'For exiting type exit and hit enter'
+}
 
 #main
 #AF=`cat ./Ascii_art/3.txt`
@@ -141,10 +153,10 @@ case $CHC in
     -i)      install;;                      
     list)    list;;                               #calls list function  
     -l)      list;;                                 
-    help)    echo "got bored so fuck it im gonna leave it here ";; #calls help funtion(not coded)    
-    -h)      echo "abhi fuction code nahi kara";; 
+    help)    help;; #calls help funtion(not coded)    
+    -h)      help;; 
     fix)     check;;                              #calls fix function  
-    -f)      echo "abhi fuction code nahi kara";;
+    -f)      check;;
     exit)    break;;
     *)       echo "fuck, didnt think about this one ";; #default case
 esac

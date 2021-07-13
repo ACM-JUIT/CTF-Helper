@@ -5,7 +5,7 @@ checkinstall (){
     echo "The program is already installed you are good to go ;)"
     echo "do you want to reinstall it (yes/no)"
     echo ""
-    read YE           
+    read YE
     else
     echo ""
     echo "The program is not installed, dont worry we will install it for you"
@@ -15,42 +15,70 @@ checkinstall (){
 
 #install function
 install (){
+    while true; do
     echo  "Select which category" 
     echo ""
+    cat ./toolList/index.txt
+    echo ""
     read CT                       #stores the category in CT
-    echo "Select tool"
+    case $CT in                     #switch case for the various categories, it displays the tool of the category chosen
+        binary) ./toolList/Binary.sh;;
+        crypto) ./toolList/Crypto.sh;;
+        fuzzers)./toolList/Fuzzers.sh;;
+        stego)  ./toolList/Stego.sh;;
+        web)    ./toolList/web.sh;;
+     exit) break;;  
+        *) echo "Helper HAS HAD A STONK";;
+    esac
+    
     echo ""
     read IN                       #stores the tool in IN 
     checkinstall
     if [ "$YE" = "no" ]; then
-    $IN                          #calls the tool file  
-    else                            
-    ./$CT/$IN/install-ctf.sh      #
+        while true;do
+            read CD
+            if ["$CD" = "exit"]; then
+                break
+            else
+                $CD
+            fi
+            done
+    else                         
+        ./$CT/$IN/install-ctf.sh >/dev/null      #installing the tool
+        while true;do
+            read CD
+            if ["$CD" = "exit"]; then
+                break
+            else
+                $CD
+            fi
+            done 
     fi
+    done
 }
 
 
 
 #list function
-list (){
-    while true; do
-    ./toolList/index.sh  
-    echo $ETC                       #opens the index.txt which includes the all the categories
-    echo "Select Catagory"
-    read IN                         #stores the category in IN    
-    case $IN in                     #switch case for the various categories, it displays the tool of the category chosen
-        1) ETC=`cat ./toolList/Binary.txt`;;
-        2) ETC=`cat ./toolList/Crypto.txt`;;
-        3) ETC=`cat ./toolList/Fuzzers.txt`;;
-        4) ETC=`cat ./toolList/Stego.txt`;;
-     exit) break;;  
-        *) echo "Helper HAS HAD A STONK";;
-    esac
-    echo $ETC
-    echo "Press Any Key To Return"
-    read $IN
-    done
-}
+#list (){
+#    while true; do
+#    ./toolList/index.sh  
+#    echo $ETC                       #opens the index.txt which includes the all the categories
+#    echo "Select Catagory"
+#    read IN                         #stores the category in IN    
+#    case $IN in                     #switch case for the various categories, it displays the tool of the category chosen
+#        1) ETC=`cat ./toolList/Binary.txt`;;
+#        2) ETC=`cat ./toolList/Crypto.txt`;;
+#        3) ETC=`cat ./toolList/Fuzzers.txt`;;
+#        4) ETC=`cat ./toolList/Stego.txt`;;
+#     exit) break;;  
+#        *) echo "Helper HAS HAD A STONK";;
+#    esac
+#    echo $ETC
+#    echo "Press Any Key To Return"
+#    read $IN
+#    done
+#}
 
 #check
 check (){
@@ -101,7 +129,7 @@ echo ""
 
 echo "What you wanna do today 0_0:";
 echo ""
-echo "(-i) install            (-l) list"
+echo "(-i) install            (-e) exit"
 echo "(-f) fix                (-h) help"
 echo ""
 
@@ -113,7 +141,7 @@ case $CHC in
     -i)      install;;                      
     list)    list;;                               #calls list function  
     -l)      list;;                                 
-    help)    echo "abhi fuction code nahi kara";; #calls help funtion(not coded)    
+    help)    echo "got bored so fuck it im gonna leave it here ";; #calls help funtion(not coded)    
     -h)      echo "abhi fuction code nahi kara";; 
     fix)     check;;                              #calls fix function  
     -f)      echo "abhi fuction code nahi kara";;

@@ -1,4 +1,6 @@
-1.Binary
-2.Crypto
-3.Fuzzers
-4.Stego
+1.binary
+2.crypto
+3.fuzzers
+4.stego
+5.tool
+6.web

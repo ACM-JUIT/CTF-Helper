@@ -1,4 +1,4 @@
-echo "stego-   1.)ElectronicColoringBook(Windows and Linux)
+stego-   1.)ElectronicColoringBook(Windows and Linux)
          It is a colorize data file according to repetitive chunks.
 
          2.)exiftool(Windows and Linux)
@@ -17,4 +17,4 @@ echo "stego-   1.)ElectronicColoringBook(Windows and Linux)
          The stegdetect utility analyses image files for steganographic content.
 
          7.)stegsolve(Windows and Linux)
-         Stegsolve is an image channel viewer written in Java. It used for anti-stealth and hidden information detection."
+         Stegsolve is an image channel viewer written in Java. It used for anti-stealth and hidden information detection.

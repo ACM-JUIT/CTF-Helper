@@ -1,4 +1,4 @@
-echo "Crypto-  1.)aeskeyfind(Windows and Linux)
+Crypto-  1.)aeskeyfind(Windows and Linux)
          aeskeyfind is a tool that illustrates automatic techniques for locating 128-bit and 256-bit AES keys in a captured memory image.
 
          2.)cribdrag(Windows)
@@ -32,4 +32,4 @@ echo "Crypto-  1.)aeskeyfind(Windows and Linux)
          xortool.py is a tool to do some xor analysis.
 
          12.)yafu(Windows and Linux)
-         YAFU is primarily a command-line driven tool."
+         YAFU is primarily a command-line driven tool.

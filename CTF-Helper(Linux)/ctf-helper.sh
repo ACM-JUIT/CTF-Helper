@@ -2,95 +2,142 @@
 checkinstall (){
     if which $IN >/dev/null; then             #checks if the software is installed
     echo ""
-    echo "The program is already installed you are good to go ;)"
-    echo "do you want to reinstall it (yes/no)"
+    echo "[+] The program is already installed you are good to go ;)"
+    echo "[*] do you want to reinstall it (yes/no)"
     echo ""
     read YE
+    if [ "$YE" = "yes" ]; then
+    sudo apt --purge remove $IN
+    echo ""
+    fi
+    elif [[ -d "$IN" ]]; then
+    echo ""
+    echo "[+] The program is already installed you are good to go ;)"
+    echo "[*] do you want to reinstall it (yes/no)"
+    echo ""
+    read YE
+        if [ "$YE" = "yes" ]; then
+        sudo rm -r $IN
+        else
+        echo ""
+        fi
     else
     echo ""
-    echo "The program is not installed, dont worry we will install it for you"
+    echo "[-] The program is not installed, dont worry we will install it for you"
     fi
 }
 
 
+uninstall (){
+    echo ""
+    echo "[*] which tools you want to uninstall:"
+    echo ""
+    read UN
+    if [[ -d "$UN" ]]; then
+    sudo rm -r $UN
+    echo "[-] Tool is uninstalled"
+    elif apt list -a $UN  2>/dev/null; then
+    sudo apt --purge remove $UN
+    echo "[-] Tool is uninstalled"
+    else
+    echo "[ERR] Tool is not installed"
+    fi
+}
+
+
+
+
+run (){
+    if [ "$MD" == "69" ]; then
+    echo ""
+    echo "[*] which tool you want to run"
+    echo ""
+    read IN
+    if which $IN || [[ -d "$IN" ]]; then
+    echo "[++] run your tool, try $IN -h or if you have to install the setup cd $IN "
+    echo ""
+    while true;do
+    read CD
+    if [ "$CD" == "exit" ]; then
+    break
+    else
+    $CD  2>/dev/null
+    fi
+    done
+    else
+    echo "[-] The tool is not installed"
+    echo "[*] Do you want to install the tool(yes/no)"
+    echo ""
+    read YN
+    if [ "$YN" == "yes" ]; then
+    install
+    else
+    echo ""
+    fi
+    fi
+    else
+    echo "[++] run your tool, try $IN -h or if you have to install the setup cd $IN"
+    echo ""
+    while true;do
+    read CD
+    if [ "$CD" == "exit" ]; then
+    break
+    else
+    $CD 2>/dev/null
+    fi
+    done
+    fi
+}
+
 #install function
 install (){
-    while true; do
-    echo  "Select which category" 
+    list    
+    checkinstall
+    if [ "$YE" = "no" ]; then
+    run    
+    else 
+        chmod +x  ./$CT/$IN/install-ctf.sh                 
+        ./$CT/$IN/install-ctf.sh 2>/dev/null      #installing the tool
+        echo ""
+        echo "[+] Tool is installed"
+        run
+    fi
+    
+}
+
+
+
+#list function
+list (){
+    echo  "[*] Select which category" 
     echo ""
     cat ./toolList/index.txt
     echo ""
     read CT                         #stores the category in CT
     echo ""
     case $CT in                     #switch case for the various categories, it displays the tool of the category chosen
-        binary) ./toolList/Binary.sh;;
-        crypto) ./toolList/Crypto.sh;;
-        fuzzers)./toolList/Fuzzers.sh;;
-        stego)  ./toolList/Stego.sh;;
-        web)    ./toolList/web.sh;;
+        Binary) cat ./toolList/Binary.txt;;
+        crypto) cat ./toolList/Crypto.txt;;
+        fuzzers)cat ./toolList/Fuzzers.txt;;
+        stego)  cat ./toolList/Stego.txt;;
+        web)    cat ./toolList/web.txt;;
      exit) break;;  
-        *) echo "Helper HAS HAD A STONK";;
+        *) echo "[ERR] select from the options available";;
     esac
-    
     echo ""
-    echo "Select your tool"
+    echo "[*] Select your tool"
     read IN                       #stores the tool in IN 
     echo ""
-    checkinstall
-    if [ "$YE" = "no" ]; then
-        while true;do
-            read CD
-            if ["$CD" = "exit"]; then
-                break
-            else
-                $CD
-            fi
-            done
-    else                         
-        ./$CT/$IN/install-ctf.sh >/dev/null      #installing the tool
-        while true;do
-            read CD
-            if ["$CD" = "exit"]; then
-                break
-            else
-                $CD
-            fi
-            done 
-    fi
-    done
 }
-
-
-
-#list function
-#list (){
-#    while true; do
-#    ./toolList/index.sh  
-#    echo $ETC                       #opens the index.txt which includes the all the categories
-#    echo "Select Catagory"
-#    read IN                         #stores the category in IN    
-#    case $IN in                     #switch case for the various categories, it displays the tool of the category chosen
-#        1) ETC=`cat ./toolList/Binary.txt`;;
-#        2) ETC=`cat ./toolList/Crypto.txt`;;
-#        3) ETC=`cat ./toolList/Fuzzers.txt`;;
-#        4) ETC=`cat ./toolList/Stego.txt`;;
-#     exit) break;;  
-#        *) echo "Helper HAS HAD A STONK";;
-#    esac
-#    echo $ETC
-#    echo "Press Any Key To Return"
-#    read $IN
-#    done
-#}
 
 #check
 check (){
      
     HA=find . -type f -exec md5sum {} + | LC_ALL=C sort | md5sum  #finds the hash
     if [$HA == 121c476533b28474dc2e09d9b6751ca0]; then            #checks if the hash is same    
-    echo "you are good to go"                                       
+    echo "[+] you are good to go"                                       
     else
-    echo "your files are little messed up let us fix it for you"
+    echo "[-] your files are little messed up let us fix it for you"
     #git pull repository_link                           
     fi 
 }
@@ -117,7 +164,6 @@ help (){
 #echo $AF
 while true; do
 ascii
-
 echo ""
 echo ""
 echo "
@@ -134,7 +180,7 @@ echo "           =[ CTF-Helper version 1.1 "
 echo "+ -- -- -- =[ CTF tools at your fingertips "
 echo "+ -- -- -- =[ Star us on github, if you are loving it "
 echo ""
-echo "Note: we would love if you could contribute to our project"
+echo "[++] we would love if you could contribute to our project"
 echo ""
 echo ""
 
@@ -142,9 +188,10 @@ echo ""
 echo "What you wanna do today 0_0:";
 echo ""
 echo "(-i) install            (-e) exit"
+echo "(-u) uninstall          (-r) run"
 echo "(-f) fix                (-h) help"
-echo ""
 
+echo ""
 
 
 read CHC                                          #reads
@@ -153,11 +200,17 @@ case $CHC in
     -i)      install;;                      
     list)    list;;                               #calls list function  
     -l)      list;;                                 
-    help)    help;; #calls help funtion(not coded)    
+    help)    help;;                               #calls help funtion(not coded)    
     -h)      help;; 
     fix)     check;;                              #calls fix function  
     -f)      check;;
+    uninstall) uninstall;;
+    -u)      uninstall;;
+    run)    MD="69"
+            run;;
+    -r)     MD="69"
+            run;;   
     exit)    break;;
-    *)       echo "fuck, didnt think about this one ";; #default case
+    *)       echo "[ERR] fuck, didnt think about this one ";; #default case
 esac
 done

@@ -1,4 +1,4 @@
-echo "web-      1.)burpsuite(Windows and Linux)
+web-            1.)burpsuite(Windows and Linux)
                 Burp Suite Professional is one of the most popular penetration testing and vulnerability finder tools, and is often used for checking web application security.
 
                 2.)dirsearch(Windows and Linux)
@@ -14,5 +14,5 @@ echo "web-      1.)burpsuite(Windows and Linux)
                 Net Creds is a free tool that sniffs passwords and hashes from a network interface.
 
                 6.)sqlmap(Windows and Linux)
-                SQL Injection is a code injection technique where an attacker executes malicious SQL queries that control a web application's database."
+                SQL Injection is a code injection technique where an attacker executes malicious SQL queries that control a web application's database.
                 

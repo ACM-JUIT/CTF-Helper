@@ -11,4 +11,3 @@ sudo apt-get install -y bison libglib2.0-dev
 ./build_qemu_support.sh
 cd ../..
 
-ln -s $PWD/afl/{afl-as,afl-cmin,afl-fuzz,afl-gcc,afl-gotcpu,afl-plot,afl-qemu-trace,afl-showmap,afl-tmin,afl-whatsup} $CTF_ROOT/bin

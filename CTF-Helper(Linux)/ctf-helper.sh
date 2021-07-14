@@ -2,8 +2,8 @@
 checkinstall (){
     if which $IN >/dev/null; then             #checks if the software is installed
     echo ""
-    echo "[+] The program is already installed you are good to go ;)"
-    echo "[*] do you want to reinstall it (yes/no)"
+    printf "${GREEN}[+] The program is already installed you are good to go ;)\n${NC}"
+    printf "${ORANGE}[*] do you want to reinstall it (yes/no)\n${NC}"
     echo ""
     read YE
     if [ "$YE" = "yes" ]; then
@@ -12,8 +12,8 @@ checkinstall (){
     fi
     elif [[ -d "$IN" ]]; then
     echo ""
-    echo "[+] The program is already installed you are good to go ;)"
-    echo "[*] do you want to reinstall it (yes/no)"
+    printf "${GREEN}[+] The program is already installed you are good to go ;)\n${NC}"
+    printf "${ORANGE}[*] do you want to reinstall it (yes/no)\n${NC}"
     echo ""
     read YE
         if [ "$YE" = "yes" ]; then
@@ -23,24 +23,25 @@ checkinstall (){
         fi
     else
     echo ""
-    echo "[-] The program is not installed, dont worry we will install it for you"
+    printf "${RED}[-] The program is not installed, dont worry we will install it for you\n${NC}"
     fi
 }
 
 
+
 uninstall (){
     echo ""
-    echo "[*] which tools you want to uninstall:"
+    printf "${ORANGE}[*] which tools you want to uninstall:\n${NC}"
     echo ""
     read UN
     if [[ -d "$UN" ]]; then
     sudo rm -r $UN
-    echo "[-] Tool is uninstalled"
+    printf "${GREEN}[+] Tool is uninstalled\n${NC}"
     elif apt list -a $UN  2>/dev/null; then
     sudo apt --purge remove $UN
-    echo "[-] Tool is uninstalled"
+    printf "${GREEN}[+] Tool is uninstalled\n${NC}"
     else
-    echo "[ERR] Tool is not installed"
+    printf "${RED}[ERR] Tool is not installed\n${NC}"
     fi
 }
 
@@ -50,11 +51,11 @@ uninstall (){
 run (){
     if [ "$MD" == "69" ]; then
     echo ""
-    echo "[*] which tool you want to run"
+    printf "${ORANGE}[*] which tool you want to run\n${NC}"
     echo ""
     read IN
     if which $IN || [[ -d "$IN" ]]; then
-    echo "[++] run your tool, try $IN -h or if you have to install the setup cd $IN "
+    printf "${GREEN}[++] run your tool, try $IN -h or if you have to install the setup cd $IN \n${NC}"
     echo ""
     while true;do
     read CD
@@ -65,8 +66,8 @@ run (){
     fi
     done
     else
-    echo "[-] The tool is not installed"
-    echo "[*] Do you want to install the tool(yes/no)"
+    printf "${RED}[-] The tool is not installed\n${NC}"
+    printf "${ORANGE}[*] Do you want to install the tool(yes/no)\n${NC}"
     echo ""
     read YN
     if [ "$YN" == "yes" ]; then
@@ -76,7 +77,7 @@ run (){
     fi
     fi
     else
-    echo "[++] run your tool, try $IN -h or if you have to install the setup cd $IN"
+    printf "${GREEN}[++] run your tool, try $IN -h or if you have to install the setup cd $IN \n${NC}"
     echo ""
     while true;do
     read CD
@@ -99,7 +100,7 @@ install (){
         chmod +x  ./$CT/$IN/install-ctf.sh                 
         ./$CT/$IN/install-ctf.sh 2>/dev/null      #installing the tool
         echo ""
-        echo "[+] Tool is installed"
+        printf "${GREEN}[+] Tool is installed\n${NC}"
         run
     fi
     
@@ -109,7 +110,7 @@ install (){
 
 #list function
 list (){
-    echo  "[*] Select which category" 
+    printf  "${ORANGE}[*] Select which category\n${NC}" 
     echo ""
     cat ./toolList/index.txt
     echo ""
@@ -122,10 +123,10 @@ list (){
         stego)  cat ./toolList/Stego.txt;;
         web)    cat ./toolList/web.txt;;
      exit) break;;  
-        *) echo "[ERR] select from the options available";;
+        *) printf "${RED}[ERR] select from the options available\n${NC}";;
     esac
     echo ""
-    echo "[*] Select your tool"
+    printf "${ORANGE}[*] Select your tool\n${NC}"
     read IN                       #stores the tool in IN 
     echo ""
 }
@@ -164,6 +165,11 @@ help (){
 #echo $AF
 while true; do
 ascii
+ORANGE='\033[0;33m'
+PURPLE='\033[0;35m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Colo
 echo ""
 echo ""
 echo "
@@ -176,11 +182,11 @@ echo "
 echo ""
 echo ""
 echo ""
-echo "           =[ CTF-Helper version 1.1 " 
-echo "+ -- -- -- =[ CTF tools at your fingertips "
-echo "+ -- -- -- =[ Star us on github, if you are loving it "
+printf "${ORANGE}           =[ CTF-Helper version 1.1\n${NC}" 
+printf "${ORANGE}+ -- -- -- =[ CTF tools at your fingertips\n${NC}"
+printf "${ORANGE}+ -- -- -- =[ Star us on github, if you are loving it\n${NC}"
 echo ""
-echo "[++] we would love if you could contribute to our project"
+printf "${GREEN}[++] we would love if you could contribute to our project${NC}"
 echo ""
 echo ""
 
@@ -192,7 +198,6 @@ echo "(-u) uninstall          (-r) run"
 echo "(-f) fix                (-h) help"
 
 echo ""
-
 
 read CHC                                          #reads
 case $CHC in
@@ -211,6 +216,6 @@ case $CHC in
     -r)     MD="69"
             run;;   
     exit)    break;;
-    *)       echo "[ERR] fuck, didnt think about this one ";; #default case
+    *)       printf "${RED}[ERR] fuck, didnt think about this one${NC}";; #default case
 esac
 done

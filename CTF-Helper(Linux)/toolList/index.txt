@@ -1,6 +1,4 @@
 1.Binary
 2.Crypto
 3.Fuzzers
-4.Stego
-5.Tool
-6.Web
+4.Web

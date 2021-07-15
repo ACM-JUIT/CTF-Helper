@@ -4,7 +4,7 @@
 
 An open source CTF-DB , which stores various Techniques of solving a particular genre of CTF. Similar to sec-tools, but its cross platform for linux as well as windows.
 
-![](2021-07-12-21-29-03.png)
+![](2021-07-14-21-56-33.png)
 
 ## Installation
 
@@ -25,7 +25,7 @@ chmod +x ctf-helper.sh
 ```
 
 ## Usage
-![](2021-07-12-21-32-26.png)
+![](2021-07-14-21-56-55.png)
 ```
 # advised to install these pakages before use
 pip install wget

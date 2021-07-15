@@ -4,4 +4,4 @@ mv yafu.zip yafu
 cd yafu
 unzip yafu.zip
 chmod 755 yafu
-ln -s $PWD/yafu $CTF_ROOT/bin/yafu
+

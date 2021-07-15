@@ -1,2 +1,0 @@
-echo "fuzzers-  afi(Windows and Linux)- It is a state-of-the-art fuzzer.
-                pathgrind(Linux)- Pathgrind is a symbolic execution engine based on Valgrind that uses STP for solving constraints."

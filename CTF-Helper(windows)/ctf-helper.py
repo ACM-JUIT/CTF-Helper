@@ -1,17 +1,37 @@
 import subprocess
 import random
+import os.path
+import shutil
 
 
 def checkinstall(TI):
     rc = subprocess.call(['where', TI])
     if rc == 0:
-        print(TI+'installed!')
+        print(TI + 'installed!')
         print('do you want to reinstall(yes/no)')
         YO = input()
         return YO
     else:
         print(TI + ' missing in path!')
         return 'yes'
+
+
+def uninstall():
+    print("Which tool you want to uninstall?")
+    UT = input()
+    ans = os.path.isdir('Tools/'+UT)
+    if ans:
+        print("The tool is being uninstalled")
+        print("..")
+        print("..")
+        print("..")
+        directory = UT
+        parent = "Tools/"
+        path = os.path.join(parent, directory)
+        shutil.rmtree(path)
+        print("Tool is uninstalled")
+    else:
+        print("Tool is not installed")
 
 
 def install():
@@ -50,7 +70,8 @@ def install():
     if CH == "no":
         print("we are running the tool for you\n")
     else:
-        exec(open("./" + choice + "/"+TI+".py").read())
+        exec(open("./" + choice + "/" + TI + ".py").read())
+
 
 # Fix Function (Md5)
 # def fix():
@@ -60,8 +81,9 @@ def install():
 
 def ascii1():
     RA = random.randint(0, 4)
-    f = open("./ascii_art/"+str(RA)+".txt", "r")
+    f = open("./ascii_art/" + str(RA) + ".txt", "r")
     print(f.read())
+
 
 ascii1()
 print("")
@@ -88,14 +110,17 @@ while True:
 
     print("What you wanna do today 0_0:")
     print("")
-    print("install                 help")
-    print("fix                     exit")
+    print("install                 exit")
+    print("uninstall               fix")
+    print("help")
     print("")
     choice = input()
     if choice == "exit":
         break
     elif choice == "install":
         install()
+    elif choice == "uninstall":
+        uninstall()
     elif choice == "fix":
         print('I got bored so I am leaving it here')
     elif choice == "help":
@@ -103,7 +128,8 @@ while True:
         print('1.Type install and press enter')
         print('2.)You will now see a list of categories of tools')
         print('3.)Type the name of the category you want.For example:Binary')
-        print('4.)List of tools will appear.Type the name of the tool you want to unstall and press enter.For example: dex2ja')
+        print(
+            '4.)List of tools will appear.Type the name of the tool you want to unstall and press enter.For example: dex2ja')
         print('5.)Selected tool will soon be downloaded.Happy Hacking! :)')
         print('For exiting type exit and hit enter')
     else:

@@ -1,7 +1,10 @@
 import subprocess
 import random
-import os.path
+import os
 import shutil
+exceptTools=["index.txt"]
+tools=os.listdir("./toolList")
+tools.remove(exceptTools[0])
 
 
 def checkinstall(TI):
@@ -33,45 +36,33 @@ def uninstall():
     else:
         print("Tool is not installed")
 
+def streamOptions(choice):
+    choice=str(choice).lower()
+    f = os.listdir(f"./{choice}")
+    print("\n".join([i for i in f]))
 
 def install():
     print("select category")
     while True:
-        f = open("./toolList/index.txt", "r")
-        print(f.read())
+        print("\n".join([i.replace(".txt","") for i in tools]))
         choice = input("Choice:")
         if choice == "exit":
             exit()
-        elif choice == "binary" or choice=="1":
-            f = open("./toolList/Binary.txt", "r")
-            print(f.read())
-            break
-        elif choice == "crypto" or choice=="2":
-            f = open("./toolList/Crypto.txt", "r")
-            print(f.read())
-            break
-        elif choice == "stego" or choice=="3":
-            f = open("./toolList/Stego.txt", "r")
-            print(f.read())
-            break
-        elif choice == "fuzzers" or choice=="4":
-            f = open("./toolList/Fuzzers.txt", "r")
-            print(f.read())
-            break
-        elif choice == "web" or choice=="5":
-            f = open("./toolList/web.txt", "r")
-            print(f.read())
+        elif f"{choice}.txt" in tools:
+            streamOptions(choice)
             break
         else:
             print("Invalid choice, please choose again\n")
     print("select tool")
-    TI = input("Choice")
+    TI = input("Choice:")
     CH = checkinstall(TI)
     if CH == "no":
         print("we are running the tool for you\n")
     else:
-        exec(open("./" + choice + "/" + TI + ".py").read())
-
+        try:
+            exec(   open("./" + choice.lower() + "/" + TI + ".py").read())
+        except(Exception):
+            print("Tools coming soon")
 
 # Fix Function (Md5)
 def fix():

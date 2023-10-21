@@ -110,7 +110,7 @@ def main():
             subprocess.call("cls",shell=True)
             ascii1()
             print('For installing a tool:')
-            print('1.Type install and press enter')
+            print('1.)Type install and press enter')
             print('2.)You will now see a list of categories of tools')
             print('3.)Type the name of the category you want.For example:Binary')
             print(
